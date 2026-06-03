@@ -1,0 +1,69 @@
+:root{
+  --pink:#ff3da0; --blue:#2bb3f0; --green:#1fc16b; --yellow:#ffc83d;
+  --navy:#1b2a6b; --ink:#e7ecfb; --muted:#8b95b5; --line:#2a3350;
+  --bg:#0e1322; --card:#191f33;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;height:100%}
+body{
+  font-family:"Segoe UI",system-ui,Arial,sans-serif;color:var(--ink);
+  background:
+    radial-gradient(1100px 700px at 12% -8%,rgba(43,179,240,.12) 0,transparent 55%),
+    radial-gradient(1000px 700px at 92% 4%,rgba(255,61,160,.10) 0,transparent 50%),
+    var(--bg);
+  overflow-x:hidden;
+}
+
+.page{min-height:100vh;display:flex;flex-direction:column;align-items:center;
+  padding:40px 24px 60px;text-align:center}
+
+.brand{display:flex;align-items:center;gap:16px;margin-bottom:6px}
+.brand .logo{height:54px;width:auto}
+.brand h1{font-size:30px;margin:0;font-weight:800;letter-spacing:.5px}
+.brand span{display:block;font-size:13px;color:var(--muted);letter-spacing:3px;margin-top:3px}
+
+.subtitle{color:var(--muted);font-size:18px;margin:4px 0 6px}
+.subtitle b{color:var(--blue)}
+
+/* ===== Globe ===== */
+.globe-stage{position:relative;width:min(640px,92vw);aspect-ratio:1/1;margin:10px auto 0}
+.globe-stage canvas{width:100%;height:100%;cursor:grab;touch-action:none;
+  contain:layout paint size}
+.globe-stage canvas:active{cursor:grabbing}
+
+/* Polaroid карт — байршилд "наасан" */
+.pin{position:absolute;left:0;top:0;will-change:transform,opacity;
+  transition:opacity .25s linear;pointer-events:none;z-index:5}
+.polaroid{transform:translate(-50%,-100%);background:#fff;color:#1a2440;
+  border-radius:8px;padding:8px 8px 10px;width:120px;
+  box-shadow:0 14px 30px -8px rgba(0,0,0,.6);position:relative}
+.polaroid::after{content:"";position:absolute;left:50%;bottom:-12px;transform:translateX(-50%);
+  border:7px solid transparent;border-top-color:#fff}
+.polaroid .pic{height:80px;border-radius:5px;display:flex;align-items:center;justify-content:center;
+  font-size:40px;background:linear-gradient(135deg,#dbe7fb,#a9c6f0)}
+.polaroid .cap{margin-top:7px;font-size:13px;font-weight:700;line-height:1.2}
+.polaroid .cap small{display:block;font-weight:500;color:#6a7390;font-size:11px;margin-top:2px}
+.polaroid .badge{position:absolute;top:-9px;right:-9px;background:var(--pink);color:#fff;
+  font-size:12px;font-weight:800;min-width:26px;height:26px;border-radius:50%;
+  display:grid;place-items:center;box-shadow:0 0 14px -3px rgba(255,61,160,.8)}
+
+/* ===== Доорх удирдлага + жагсаалт ===== */
+.controls{display:flex;gap:10px;justify-content:center;margin-top:10px}
+.controls button{width:46px;height:46px;border-radius:12px;border:1px solid var(--line);
+  background:var(--card);color:var(--ink);font-size:20px;cursor:pointer;transition:.12s}
+.controls button:hover{border-color:var(--blue);color:var(--blue)}
+.controls button:active{transform:scale(.92)}
+
+.legend{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;
+  width:min(900px,92vw);margin:28px auto 0}
+.country{display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid var(--line);
+  border-radius:12px;padding:12px 14px;text-align:left}
+.country .cf{font-size:26px}
+.country .cn{flex:1;min-width:0}
+.country .cn b{display:block;font-size:16px}
+.country .cn small{color:var(--muted);font-size:12.5px}
+.country .cc{background:var(--pink);color:#fff;font-weight:800;font-size:14px;min-width:32px;
+  height:32px;border-radius:9px;display:grid;place-items:center}
+
+.foot{margin-top:34px;color:var(--muted);font-size:14px}
+.foot a{color:var(--blue);text-decoration:none}
